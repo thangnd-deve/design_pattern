@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  app:
+    container_name: golang_local
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8080"
+    restart: unless-stopped
+    volumes:
+      - ./src:/src
+    networks:
+      - design-pattern
+
+networks:
+  design-pattern:
+    driver: bridge
